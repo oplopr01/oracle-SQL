@@ -80,4 +80,140 @@ select name from employee where salary >2000 and months<10 order by employee_id;
 Question9:-  Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
 
 Query:- 
+SELECT CITY, LENGTH(CITY) AS CITY_LENGTH
+FROM STATION
+WHERE LENGTH(CITY) = (
+    SELECT MIN(LENGTH(CITY))
+    FROM STATION
+)
+ORDER BY CITY
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+Question10;- Query a count of the number of cities in CITY having a Population larger than 100000
+
+Query:- 
+select count(name) from city where population > 100000;
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion11:- Query the total population of all cities in CITY where District is California.
+Query:- 
+select sum(population) from city where district = 'California';
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion12:- Query the average population of all cities in CITY where District is California.
+
+Query:- 
+select avg(population) from city where district = 'California';
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion13:- Query the average population for all cities in CITY, rounded down to the nearest integer.
+
+Query:-
+select round(avg(population)) from city;
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion14:- Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+
+Query:- 
+select sum(population) from city where countrycode = 'JPN';
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion15:- Query the difference between the maximum and minimum populations in CITY.
+
+Query:-
+select max(population) - min(population) from city;
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion16:- We define an employee's total earnings to be their monthly  worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as  space-separated integers.
+
+Query:- 
+select max(salary* months) as totalSal, count(*) from employee where (salary*months)= (select max(salary*months) from employee);
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+Quetion17:- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
