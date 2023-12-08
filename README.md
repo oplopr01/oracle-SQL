@@ -180,17 +180,21 @@ select max(salary* months) as totalSal, count(*) from employee where (salary*mon
 
 
 
-Quetion17:- 
+Quetion17:- REMOVE VOWELS FROM ENAMES
+
+qUERY:-  SELECT REPLACE(TRANSLATE(UPPER(ENAME), 'AEIOU', 'AAAAA'),'A','') FROM EMP
 
 
 
 
+--------------------------------------------------------------------------------------------------
 
 
 
+Quetion18:-  COUNT THE NUMBER OF VOWELS IN EACH ENAMES
 
-
-
+qUERY :- 
+SELECT ENAME, LENGTH(ENAME)- LENGTH(REPLACE(TRANSLATE(UPPER(ENAME), 'AEIOU', 'AAAAA'),'A','')) AS VOWELcOUNT FROM EMP;
 
 
 
