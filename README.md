@@ -185,16 +185,71 @@ Quetion17:- REMOVE VOWELS FROM ENAMES
 qUERY:-  SELECT REPLACE(TRANSLATE(UPPER(ENAME), 'AEIOU', 'AAAAA'),'A','') FROM EMP
 
 
-
-
 --------------------------------------------------------------------------------------------------
-
 
 
 Quetion18:-  COUNT THE NUMBER OF VOWELS IN EACH ENAMES
 
 qUERY :- 
 SELECT ENAME, LENGTH(ENAME)- LENGTH(REPLACE(TRANSLATE(UPPER(ENAME), 'AEIOU', 'AAAAA'),'A','')) AS VOWELcOUNT FROM EMP;
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Question19:-  details of employee along with half term salary for the employee whose second character of the name is consonent
+
+Query:- 
+select emp.*, sal*6 as half_term_sal from emp where substr(ename,2,1) not in ('A','I','E','O','U');
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Question20:- details of the employees who is earning maximum sal in each department
+
+Query:- 
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Question21:- middle 3 records from first half of the emp table
+
+Query:-
+select * from (select emp.*, rownum r from emp where rownum <= (select trunc(count(*)/2) from emp)) e1 where r between (select round(round(count(*)/2)/2) from emp )-1 and (select round(round(count(*)/2)/2) from emp )+1;
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Question22:- display ename, job and deptname  should be present even if there are no employee or job in that perticular department
+
+Query:- 
+select ename, job , dname from dept left join emp on dept.deptno = emp.deptno;
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Question23:- display ename, loc without using where clause
+
+Query:-
+select ename, loc from emp natural join dept;
+
+--------------------------------------------------------------------------------------------------
+
+
+Question24:- display ename, managers manager name and there locations
+Query:- 
+
+select e1.ename, e2.ename mgr, e3.ename managers_manager, d1.loc emp_loc , d2.loc mgr_loc from emp e1,emp e2, emp e3, dept d1, dept d2 where e1.mgr =e2.empno and e2.mgr = e3.empno and d1.deptno = e1.deptno and  d2.deptno = e3.deptno;
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
 
 
 
