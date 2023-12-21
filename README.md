@@ -174,8 +174,6 @@ select max(salary* months) as totalSal, count(*) from employee where (salary*mon
 
 
 
-
-
 --------------------------------------------------------------------------------------------------
 
 
@@ -271,6 +269,8 @@ Query:-
 select deptno, count(*) from emp group by deptno;
 
 
+--------------------------------------------------------------------------------------------------
+
 Question28:- find number of vowels present in enames
 
 Query:-
@@ -279,8 +279,22 @@ select ename,length(ename) - length(replace(replace(replace(replace(replace(enam
 SELECT ENAME , LENGTH(ENAME)- LENGTH(REPLACE(TRANSLATE(ENAME,'AEIOU','AAAAA'),'A','')) FROM EMP;
 
 
+--------------------------------------------------------------------------------------------------
 
 
+Question29:- display deptno and total number of employee working  where maxnumber of employee working
+
+Query:-
+SELECT * FROM (SELECT DEPTNO, COUNT(*) FROM EMP GROUP BY DEPTNO ORDER BY COUNT(*) DESC) WHERE ROWNUM =1 ;
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Question30:- details of the employee whose earning maximum salary in each department
+
+Query:-
+select * from emp where sal in(select sal from (select max(sal) sal, deptno from emp group by deptno));
 
 
 
