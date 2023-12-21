@@ -249,6 +249,36 @@ select e1.ename, e2.ename mgr, e3.ename managers_manager, d1.loc emp_loc , d2.lo
 --------------------------------------------------------------------------------------------------
 
 
+Question25:-  display middle 3 records from emp table
+
+Query:-
+select * from (select emp.*,rownum r from emp) where r between (select round(count(*)/2) from emp)-1 and  ((select round(count(*)/2) from emp)+1);
+
+
+--------------------------------------------------------------------------------------------------
+
+Question26:- display ename, job and location without using where clause
+
+Query:-
+ select ename, job, dname from emp join dept on emp.deptno = dept.deptno;
+
+
+--------------------------------------------------------------------------------------------------
+
+Question27:- display all the deptno along with the no of emp working in each department
+
+Query:-
+select deptno, count(*) from emp group by deptno;
+
+
+Question28:- find number of vowels present in enames
+
+Query:-
+select ename,length(ename) - length(replace(replace(replace(replace(replace(ename,'A',''),'E',''),'I',''),'O',''),'U','')) FROM EMP;
+
+SELECT ENAME , LENGTH(ENAME)- LENGTH(REPLACE(TRANSLATE(ENAME,'AEIOU','AAAAA'),'A','')) FROM EMP;
+
+
 
 
 
